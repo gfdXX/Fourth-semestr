@@ -5,17 +5,19 @@ end
 
 switch s
     case "all"
-       xn = xn - 5;
+       xn = xn - mean(xn);
        xn = xn .* tukeywin(N,0.05);
     case "nowindow"
-       xn = xn - 5;
+       xn = xn - mean(xn);
     case "nomean"
        xn = xn .* tukeywin(N,0.05);
     case "none"
 end
 
 Xk = abs(fft(xn)/N);
-range = 0:1:N-1;
-f = fd * range / N;
- 
+Xk = Xk(1:(N/2) + 1);
+Xk(2:(N)/2) = Xk(2:(N)/2) * 2;
+
+f = fd * (0:1:(N)/2)/ N;
+
 end
