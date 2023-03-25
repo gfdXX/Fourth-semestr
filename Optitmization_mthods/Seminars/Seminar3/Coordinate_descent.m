@@ -1,25 +1,25 @@
 function [X, Y, K] = Coordinate_descent(f, x_0, l_a, l_b, l_k_max, l_eps, eps)
-    e1 = [1,0];
-    e2 = [0,1];
+
+    n = 2;
+    ee = eye(n);
     x0 = x_0;
-    x2 = [10,10];
+    x1 = [10,10];
+    x_k = x0;
     i = 1;
-    while (abs(x2 - x0)) > eps
+    
+    while (abs(x1 - x_k) > eps) & (i<l_k_max)
+%         x1;
+%         x0;
         i = i + 1;
-        x_k = x0;
-        e = e1;
-        [l1, ~, ~] = dychotomy(@f_lmbd, l_a, l_b, l_eps, l_k_max);
-        x1 = x0 + l1 * e1;
-        
-        x_k = x1;
-        e = e2;
-        [l2, ~, ~] = dychotomy(@f_lmbd, l_a, l_b, l_eps, l_k_max);
-        x2 = x1 + l2 * e2;       
-        
-        x0 = x2;
-                
+        x1 = x0;
+        for j=1:n
+            x_k = x1;
+            e = ee(j);
+            [l, ~, ~] = dichotomy(@f_lmbd, l_a, l_b, l_eps, l_k_max);
+            x1 = x1 + l * e;
+        end
     end 
-    X = x2;
+    X = x1;
     Y = f(X);
     K = i;
     
