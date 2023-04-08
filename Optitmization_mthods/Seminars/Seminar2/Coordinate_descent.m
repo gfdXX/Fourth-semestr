@@ -7,9 +7,7 @@ function [X, Y, K] = Coordinate_descent(f, x_0, l_a, l_b, l_k_max, l_eps, eps)
     x_k = x0;
     i = 1;
     
-    while (abs(x1 - x_k) > eps) & (i<l_k_max)
-%         x1;
-%         x0;
+    while (norm(x1 - x_k) > eps(1)) && (i<l_k_max)
         i = i + 1;
         x1 = x0;
         for j=1:n
