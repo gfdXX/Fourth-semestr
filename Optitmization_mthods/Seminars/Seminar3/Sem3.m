@@ -1,5 +1,4 @@
 clc
-clear all
 
 x_0 = [1.0; 1.0];
 k_max = 1e5;

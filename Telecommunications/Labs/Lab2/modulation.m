@@ -12,8 +12,8 @@ simOut1 = sim('lab_modulation_am', 'SaveOutput', 'on', 'SaveFormat', 'Dataset');
 simOut1.yout.get(1).Values;
 X1=simOut1.yout.get(1).Values.Data;
 t1=simOut1.yout.get(1).Values.Time;
-% figure
-% plot(t1,X1)
+%  figure(1)
+%  plot(t1,X1)
 
 N1=length(X1);
 fd1 = 1/(t1(2)-t1(1));
@@ -22,8 +22,9 @@ S1 = abs(fft(X1)/N1);
 S1 = S1(1:N1/2);
 S1(2:N1/2)=2*S1(2:N1/2);
 f1=fd1*(0:1:(N1/2)-1)'/N1;
-% figure
-% plot(f1, S1)
+%  figure(2)
+%  plot(f1, S1)
+ %legend('am')
 close_system
 
 % % % freq modulation
@@ -49,8 +50,8 @@ S2 = abs(fft(X2)/N2);
 S2 = S2(1:N2/2);
 S2(2:N2/2)=2*S2(2:N2/2);
 f2=fd2*(0:1:(N2/2)-1)'/N2;
-% figure
-% plot(f2, S2)
+%  figure(2)
+%  plot(f2, S2)
 close_system
 
 % % % Phase modulation
@@ -79,3 +80,4 @@ f3=fd3*(0:1:(N3/2)-1)'/N3;
 close_system
 
 plot(f1, S1, f2, S2, f3, S3)
+legend('am', 'fm', 'pm')

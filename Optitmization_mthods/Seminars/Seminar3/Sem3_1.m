@@ -1,12 +1,11 @@
-close all
-clear all
+clc
 
 x_0 = [3.0, -2.0];
 k_max = 1e5;
 eps = 1e-3;
-gamma = 1.5;
+gamma = 2.0;
 
-lmbd = 4;
+lmbd = 2.0;
 
 [x_min, f_min, iter] = Hooka_jeeves_lmbd(@f, x_0, lmbd, eps, gamma);
 x_min
