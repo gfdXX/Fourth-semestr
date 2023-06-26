@@ -17,7 +17,7 @@ number(1:k)=number_tmp;
 izb = n-k;
 
 
-error_decimal = 32;
+error_decimal = 16;
 error_binary = de2bi(error_decimal, length(number_encoded), "left-msb");
 
 number_encoded_with_error = bitxor(number_encoded', error_binary);
@@ -97,3 +97,5 @@ number_encoded_with_errors=bitxor(number_encoded', errors_binary);
 
 [~, error] = step(crcdetector, number_encoded_with_errors');
 disp(['проверка достоверности передачи (1-есть ошибка, 0-нет ошибки): ', num2str(error)]);
+
+

@@ -65,19 +65,19 @@ simOut3 = sim('lab_modulation_pm', 'SaveOutput', 'on', 'SaveFormat', 'Dataset');
 simOut3.yout.get(1).Values;
 X3=simOut3.yout.get(1).Values.Data;
 t3=simOut3.yout.get(1).Values.Time;
-% figure
-% plot(t3,X3)
-
-N3=length(X3);
-fd3 = 1/(t3(2)-t3(1));
-
-S3 = abs(fft(X3)/N3);
-S3 = S3(1:N3/2);
-S3(2:N3/2)=2*S3(2:N3/2);
-f3=fd3*(0:1:(N3/2)-1)'/N3;
-% figure
-% plot(f3, S3)
-close_system
-
-plot(f1, S1, f2, S2, f3, S3)
-legend('am', 'fm', 'pm')
+figure (1)
+plot(t3,X3)
+% 
+% N3=length(X3);
+% fd3 = 1/(t3(2)-t3(1));
+% 
+% S3 = abs(fft(X3)/N3);
+% S3 = S3(1:N3/2);
+% S3(2:N3/2)=2*S3(2:N3/2);
+% f3=fd3*(0:1:(N3/2)-1)'/N3;
+% % figure
+% % plot(f3, S3)
+% close_system
+% 
+% plot(f1, S1, f2, S2, f3, S3)
+% % legend('am', 'fm', 'pm')
